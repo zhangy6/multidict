@@ -3,11 +3,14 @@
 all: test
 
 .install-deps: $(shell find requirements -type f)
+	echo "PYTEST_ADDOPTS: ${PYTEST_ADDOPTS}"
 	pip install -U -r requirements/dev.txt
 	touch .install-deps
+	echo "PYTEST_ADDOPTS: ${PYTEST_ADDOPTS}"
 
 flake: .install-deps
 #	python setup.py check -rms
+	echo "PYTEST_ADDOPTS: ${PYTEST_ADDOPTS}"
 	flake8 multidict
 	if python -c "import sys; sys.exit(sys.version_info < (3,5))"; then \
             flake8 tests; \
@@ -15,16 +18,19 @@ flake: .install-deps
 
 
 .develop: .install-deps $(shell find multidict -type f)
+	echo "PYTEST_ADDOPTS: ${PYTEST_ADDOPTS}"
 	rm -f multidict/*.so
 	rm -f multidict/_multidict.c
 	pip install -e .
 	touch .develop
 
 rmcache:
+	echo "PYTEST_ADDOPTS: ${PYTEST_ADDOPTS}"
 	rm -rf tests/__pycache__
 
 
 mypy: .develop
+	echo "PYTEST_ADDOPTS: ${PYTEST_ADDOPTS}"
 	if python -c "import sys; sys.exit(sys.implementation.name != 'cpython')"; then \
 	    mypy multidict tests; \
 	fi
