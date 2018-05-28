@@ -31,6 +31,7 @@ mypy: .develop
 
 
 test: flake .develop rmcache mypy
+	echo "PYTEST_ADDOPTS: ${PYTEST_ADDOPTS}"
 	pytest -q ./tests/
 
 vtest: flake .develop rmcache mypy
