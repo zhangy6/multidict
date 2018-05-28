@@ -13,6 +13,8 @@ python:
 
 install:
 - >
+    echo "MULTIDICT_NO_EXTENSIONS: ${MULTIDICT_NO_EXTENSIONS}"
+- >
     echo "PYTEST_ADDOPTS: ${PYTEST_ADDOPTS}"
 - &upgrade_python_toolset pip install --upgrade pip wheel setuptools
 - pip install -r requirements/ci.txt
@@ -37,7 +39,7 @@ env:
   # MULTIDICT_NO_EXTENSIONS environment variables
   # are considered as enabled if they are any non-empty strings.
   - tests with extensions enabled <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <-=
-  - MULTIDICT_NO_EXTENSIONS=X
+  - MULTIDICT_NO_EXTENSIONS=X PYTEST_ADDOTPS="$PYTEST_ADDOTPS"
 
 _helpers:
 - &_mainstream_python_base
@@ -151,7 +153,7 @@ jobs:
   include:
   - python: *pypy3
     env:
-    - MULTIDICT_NO_EXTENSIONS=X
+    - MULTIDICT_NO_EXTENSIONS=X PYTEST_ADDOTPS="$PYTEST_ADDOTPS"
 
   - <<: *_doc_base
     env:
