@@ -34,7 +34,7 @@ env:
   # https://github.com/pytest-dev/pytest-xdist/issues/9#issue-115841328
   # https://github.com/pytest-dev/pytest-xdist/issues/131#issuecomment-321521508
   # https://docs.travis-ci.com/user/reference/overview/#Virtualisation-Environment-vs-Operating-System
-  - &env_pytest PYTEST_ADDOTPS="-n 2"
+    PYTEST_ADDOTPS: -n 2
   matrix:
   # MULTIDICT_NO_EXTENSIONS environment variables
   # are considered as enabled if they are any non-empty strings.
