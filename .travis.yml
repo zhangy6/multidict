@@ -12,12 +12,14 @@ python:
 - nightly
 
 install:
-- echo "PYTEST_ADDOPTS: ${PYTEST_ADDOPTS}"
+- >
+    echo "PYTEST_ADDOPTS: ${PYTEST_ADDOPTS}"
 - &upgrade_python_toolset pip install --upgrade pip wheel setuptools
 - pip install -r requirements/ci.txt
 
 script:
-- echo "PYTEST_ADDOPTS: ${PYTEST_ADDOPTS}"
+- >
+    echo "PYTEST_ADDOPTS: ${PYTEST_ADDOPTS}"
 - make test
 
 after_success:
