@@ -35,12 +35,12 @@ env:
   # https://github.com/pytest-dev/pytest-xdist/issues/9#issue-115841328
   # https://github.com/pytest-dev/pytest-xdist/issues/131#issuecomment-321521508
   # https://docs.travis-ci.com/user/reference/overview/#Virtualisation-Environment-vs-Operating-System
-    PYTEST_ADDOTPS: "-n 2"
+    PYTEST_ADDOPTS: "-n 2"
   matrix:
   # MULTIDICT_NO_EXTENSIONS environment variables
   # are considered as enabled if they are any non-empty strings.
   - tests with extensions enabled <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <-=
-  - MULTIDICT_NO_EXTENSIONS=X PYTEST_ADDOTPS="$PYTEST_ADDOTPS"
+  - MULTIDICT_NO_EXTENSIONS=X PYTEST_ADDOPTS="$PYTEST_ADDOPTS"
 
 _helpers:
 - &_mainstream_python_base
@@ -154,7 +154,7 @@ jobs:
   include:
   - python: *pypy3
     env:
-    - MULTIDICT_NO_EXTENSIONS=X PYTEST_ADDOTPS="$PYTEST_ADDOTPS"
+    - MULTIDICT_NO_EXTENSIONS=X PYTEST_ADDOPTS="$PYTEST_ADDOPTS"
 
   - <<: *_doc_base
     env:
