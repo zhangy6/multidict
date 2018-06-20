@@ -150,9 +150,11 @@ jobs:
 
   - <<: *_lint_base
     env:
-    - flake8 <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <=
+    - pre-commit <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- <- =
+    install:
+    - pip install -U pre-commit
     script:
-    - flake8 multidict tests
+    - pre-commit run --all-files --verbose
 
   - <<: *_lint_base
     env:
