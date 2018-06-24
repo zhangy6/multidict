@@ -11,5 +11,5 @@ env:
 
 build:
   ci:
-  - pip install -tox
+  - pip install -U tox
   - python -m tox
