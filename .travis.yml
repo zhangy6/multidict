@@ -14,7 +14,6 @@ python:
 - nightly
 
 install: &default_install
-- python -m pip install -U pip wheel setuptools
 - python -m pip install -U tox
 - python -m tox --notest  # Pre-populate a virtualenv with dependencies
 
