@@ -18,7 +18,7 @@ install: &default_install
 - python -m pip install -U tox
 - python -m tox --notest  # Pre-populate a virtualenv with dependencies
 
-script:
+script: &default_script
 - python -m tox
 
 after_success:
@@ -45,6 +45,7 @@ _helpers:
   <<: *_mainstream_python_base
   <<: *_reset_steps
   install: *default_install
+  script: *default_script
 - &_doc_base
   <<: *_lint_base
   install: *default_install
